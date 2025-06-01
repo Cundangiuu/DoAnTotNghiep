@@ -1,12 +1,37 @@
-'use client'; // nếu dùng sự kiện, nhưng tạm thời có thể bỏ nếu không cần
+"use client";
 
-import Link from 'next/link';
+import React from 'react';
+import Image from 'next/image'; // Import Image
 
-export default function Navbar() {
-  return (
-    <nav style={{ padding: '1rem', backgroundColor: '#eee' }}>
-      <Link href="/" style={{ marginRight: '1rem' }}>Trang chủ</Link>
-      <Link href="/about">Giới thiệu</Link>
-    </nav>
-  );
-}
+const Navbar = () => {
+    return (
+        <div style={{
+            backgroundColor: '#e9ecef',
+            padding: '10px 20px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: '60px',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            zIndex: 1,
+        }}>
+            {/* Logo */}
+            <div style={{ fontSize: '1.5em', cursor: 'pointer' }}>
+                <Image src="/Selection.jpg" alt="Logo" width={100} height={40} /> {/* Thay thế biểu tượng menu bằng logo */}
+            </div>
+
+            {/* User Info */}
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ marginRight: '10px' }}>Hi, Binh An Pham</span>
+                <span style={{ fontSize: '1.2em', cursor: 'pointer' }}>
+                    👤
+                </span>
+            </div>
+        </div>
+    );
+};
+
+export default Navbar;

@@ -37,7 +37,7 @@ export class ClassARISE {
   class_schedule_id: number;
 
   @Column({ type: 'date', nullable: true })
-  start_date: string;
+  start_date: Date;
 
   @Column({ nullable: true })
   room: string;

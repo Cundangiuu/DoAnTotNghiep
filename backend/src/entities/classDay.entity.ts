@@ -34,7 +34,7 @@ export class ClassDay {
   lesson_id: number;
 
   @Column({ type: 'date', nullable: true })
-  class_date: string;
+  class_date: Date;
 
   @Column({ type: 'time' })
   start_time: string;

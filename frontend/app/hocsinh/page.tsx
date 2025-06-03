@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Image from "next/image"
 import Link from "next/link"
+import Sidebar from "@/components/Sidebar";
 
 interface Student {
   id: number
@@ -65,24 +66,7 @@ export default function StudentsDashboard() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <div className="w-32 bg-white border-r flex flex-col items-center py-6">
-        <div className="mb-8">
-          <Image src="/Selection.jpg" alt="Logo" width={48} height={48} className="rounded" />
-        </div>
-
-        <div className="flex flex-col items-center space-y-8 flex-1">
-          <NavItem icon={<BookOpen size={20} />} label="Dashboard" />
-          <NavItem icon={<BookOpen size={20} />} label="Courses" />
-          <NavItem icon={<FileText size={20} />} label="Classes" />
-          <NavItem icon={<Users size={20} />} label="Students" />
-          <NavItem icon={<BarChart2 size={20} />} label="Reports" />
-          <NavItem icon={<DollarSign size={20} />} label="Accounting" />
-          <NavItem icon={<UserPlus size={20} />} label="Staffs" />
-          <NavItem icon={<Settings size={20} />} label="Admin Portal" />
-        </div>
-      </div>
-
-
+      <Sidebar activeMenu="Students" />
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Header */}

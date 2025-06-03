@@ -12,6 +12,7 @@ import {
     UserCheck,
     Settings,
 } from "lucide-react"
+import Link from "next/link";
 
 interface NavItemProps {
     icon: React.ReactNode;
@@ -24,21 +25,24 @@ interface SidebarProps {
 }
 
 const menuItems = [
-    { icon: LayoutDashboard, label: "Dashboard" },
-    { icon: BookOpen, label: "Courses" },
-    { icon: GraduationCap, label: "Classes" },
-    { icon: Users, label: "Students" },
-    { icon: FileText, label: "Reports" },
-    { icon: Calculator, label: "Accounting" },
-    { icon: UserCheck, label: "Staffs" },
-    { icon: Settings, label: "Admin Portal" },
+    { icon: LayoutDashboard, label: "Dashboard", href: "/trangtongquan" },
+    { icon: BookOpen, label: "Courses", href: "/khoahoc" },
+    { icon: GraduationCap, label: "Classes", href: "/lophoc" },
+    { icon: Users, label: "Students", href: "/hocsinh" },
+    { icon: FileText, label: "Reports", href: "/baocao" },
+    { icon: Calculator, label: "Accounting", href: "/ketoan" },
+    { icon: UserCheck, label: "Staffs", href: "/nhanvien" },
+    { icon: Settings, label: "Admin Portal", href: "/congquantri" },
 ];
 
-function NavItem({ icon, label, active = false }: NavItemProps) {
+
+function NavItem({ icon, label, active = false, href }: NavItemProps & { href: string }) {
     return (
-        <div className="flex flex-col items-center w-full">
+        <Link href={href} className="w-full">
             <div
-                className={`p-3 rounded-lg flex flex-col items-center justify-center w-full ${active ? "bg-indigo-100" : ""}`}
+                className={`p-3 rounded-lg flex flex-col items-center justify-center w-full cursor-pointer hover:bg-indigo-50 ${
+                    active ? "bg-indigo-100" : ""
+                }`}
             >
                 <div className={`p-2 rounded-lg ${active ? "bg-indigo-100 text-indigo-600" : "text-gray-500"}`}>
                     {icon}
@@ -47,10 +51,9 @@ function NavItem({ icon, label, active = false }: NavItemProps) {
                     {label}
                 </span>
             </div>
-        </div>
+        </Link>
     );
 }
-
 export default function Sidebar({ activeMenu }: SidebarProps) {
     return (
         <div className="w-32 bg-white border-r flex flex-col items-center py-6" style={{ padding: '0px' }}>
@@ -64,9 +67,10 @@ export default function Sidebar({ activeMenu }: SidebarProps) {
                         icon={<item.icon size={20} />}
                         label={item.label}
                         active={activeMenu === item.label}
+                        href={item.href}
                     />
                 ))}
             </div>
         </div>
-    )
+    );
 }

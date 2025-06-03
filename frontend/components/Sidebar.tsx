@@ -1,5 +1,7 @@
+// components/Sidebar.tsx
 "use client"
 
+import Image from "next/image"
 import {
     LayoutDashboard,
     BookOpen,
@@ -51,9 +53,11 @@ function NavItem({ icon, label, active = false }: NavItemProps) {
 
 export default function Sidebar({ activeMenu }: SidebarProps) {
     return (
-        <div className="w-32 bg-white border-r flex flex-col items-center py-6" style={{ padding: '0px', position: 'fixed', top: '60px', left: '0', height: '100%', overflowY: 'auto', zIndex: 10}}>
-            
-            <div className="flex flex-col items-center space-y-4 flex-1">
+        <div className="w-32 bg-white border-r flex flex-col items-center py-6" style={{ padding: '0px' }}>
+            <div className="mb-8 flex items-center justify-start h-[100px] pl-4">
+                <Image src="/Selection.jpg" alt="Logo" width={150} height={80} className="rounded-xl" />
+            </div>
+            <div className="flex flex-col items-center space-y-8 flex-1">
                 {menuItems.map((item) => (
                     <NavItem
                         key={item.label}

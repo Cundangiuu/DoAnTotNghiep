@@ -39,12 +39,22 @@ export class ClassARISE {
   @Column({ type: 'date', nullable: true })
   start_date: Date;
 
+   @Column({ type: 'date', nullable: true })
+  end_date: Date; // ⬅️ Ngày kết thúc lớp học
+
   @Column({ nullable: true })
   room: string;
 
   @Column({ nullable: true })
   branch: string;
 
+  @Column({
+    type: 'enum',
+    enum: ['mới', 'đang diễn ra', 'kết thúc'],
+    default: 'mới',
+  })
+  status: 'mới' | 'đang diễn ra' | 'kết thúc'; // ⬅️ Trạng thái lớp học
+  
   @ManyToOne(() => Course, (course) => course.classes)
   @JoinColumn({ name: 'course_id' })
   course: Course;
@@ -59,7 +69,12 @@ export class ClassARISE {
   @OneToMany(() => Attendance, (attendance) => attendance.class)
   attendances: Attendance[];
 
-  @OneToMany(() => Staff, (staff) => staff.classes)
+  @ManyToMany(() => Staff, (staff) => staff.classes)
+  @JoinTable({
+    name: 'staffClass', // đặt tên bảng join cố định
+    joinColumn: { name: 'class_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'staff_id', referencedColumnName: 'id' },
+  })
   staffs: Staff[];
 
   @OneToMany(() => Grade, (grade) => grade.class)

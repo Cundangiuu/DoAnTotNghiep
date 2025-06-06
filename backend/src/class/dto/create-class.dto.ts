@@ -1,5 +1,5 @@
 // create-class.dto.ts
-import { IsNotEmpty, IsString, IsDateString, IsNumber } from 'class-validator';
+import { IsArray, IsString, IsDateString, IsNumber, IsOptional } from 'class-validator';
 
 export class CreateClassDto {
   @IsNumber()
@@ -16,4 +16,8 @@ export class CreateClassDto {
 
   @IsString()
   branch: string;
+
+  @IsOptional()
+  @IsArray()
+  staffIds?: number[];
 }

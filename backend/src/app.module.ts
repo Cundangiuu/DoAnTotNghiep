@@ -21,7 +21,7 @@ import { Enrollment } from './entities/enrollment.entity';
 import { Invoice } from './entities/invoice.entity';
 import { HolidaySchedule } from './entities/holidaySchedule.entity';
 import { AutomatedReport } from './entities/automatedReport.entity';
-import { ClassModule } from './class/class.module';
+import { ClassModule } from './class/classArise.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -53,8 +53,9 @@ import { ClassModule } from './class/class.module';
       ],
       synchronize: true,
     }),
-    ClassModule,
+    ClassModule
   ],
+  
   controllers: [AppController],
   providers: [AppService],
 })

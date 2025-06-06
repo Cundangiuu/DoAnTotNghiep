@@ -53,11 +53,6 @@ export class Staff {
   })
   roles: Role[];
 
-  @ManyToMany(() => ClassARISE, (cls) => cls.staffs)
-  @JoinTable({
-    name: 'staff_class',
-    joinColumn: { name: 'staff_id', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'class_id', referencedColumnName: 'id' },
-  })
+  @ManyToMany(() => ClassARISE, (cls) => cls.staffs) // đây là bên ngược lại
   classes: ClassARISE[];
 }
